@@ -14,22 +14,22 @@ function ejecutarContrato(nombreMercenario, nombreMision, dificultad) {
 
     function validarAcceso() {
         // Si el nivel de seguridad de la faccion es menor que la dificultad, no se da acceso
-        return nivelSeguridad > dificultad; //Booleano true o false 
+        return nivelSeguridad >= dificultad; //Booleano true o false 
     };
 
     //Las siguientes tres validan que exista el mercenario que la mision este disponible y que tenga el nivel adecuado para la mision 
     if (!existeMercenario(nombreMercenario)) {
-        console.log("Sistema Corporación Araska: Mercenario no registrado.");
+        console.log("Sistema Corporación Arasaka: Mercenario no registrado.");
         return;
     }
 
     if (!validarMision(nombreMision)) {
-        console.log("Sistema Corporación Araska: Misión no disponible.");
+        console.log("Sistema Corporación Arasaka: Misión no disponible.");
         return;
     }
 
     if (!validarAcceso()) {
-        console.log("Sistema Corporación Araska: Nivel de seguridad insuficiente.");
+        console.log("Sistema Corporación Arasaka: Nivel de seguridad insuficiente.");
         return;
     }
  

@@ -1,6 +1,6 @@
 
 const listaMercenarios = [];
-let nivelSeguridad = 3;
+let nivelSeguridad = 5;
 
 // Función de registro de mercenario
 function registrarMercenario(nombre, habilidad) {

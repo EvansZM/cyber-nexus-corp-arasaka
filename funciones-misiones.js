@@ -1,6 +1,17 @@
 
-// 1. Tablon de anuncios (Para las misiones legales disponibles)
-let misiones = ['Robo de datos', 'Escolta', 'Infiltracion'];
+// 1. Tablon de anuncios (Para las misiones legales disponibles) se agregan misiones extras
+let misiones = [
+  "Robo de datos",
+  "Escolta",
+  "Infiltracion",
+  "Sabotaje de drones",
+  "Rescate de informante",
+  "Intercepción de señales",
+  "Protección de VIP",
+  "Limpieza de evidencia",
+  "Hackeo de servidor central"
+];
+
 
 // 2. Calcular recompensa (En base a l bono y la dificultad se calcula el valor de la recompensa)
 function calcularRecompensa(dificultad, bono = 500){
@@ -12,26 +23,29 @@ function calcularRecompensa(dificultad, bono = 500){
 };
 
 // 3. Simulador de peligro
-function simuladorDePeligro(){
-    // Se inicializan la cantidad de intentos
-    let intentos = 0;
+function simuladorDePeligro() {
+  // Contador de intentos realizados
+  let intentos = 0;
 
-    //  Se crea una variable para crear un numero aleatorio
-    let numero = 0;
+  // Variable para guardar el número aleatorio generado
+  let numero = 0;
 
-    do{
-        //Se le asigna un numero aleatorio de 1 a 20 con Math.Floor y Math Random
-        numero = Math.floor(Math.random() * 20);
-        //Se indican la cantidad de intentos
-        console.log(`Intento de hackeo ${intentos}`);
-        intentos++;
+  do {
+    // Genera un número aleatorio entre 0 y 20
+    numero = Math.floor(Math.random() * 20) + 1;
 
-    }while(numero <= 8 || intentos < 5){
+    // Muestra el intento actual (sumo 1 para que se vea humano: intento 1,2,3...)
+    console.log(`Intento de hackeo ${intentos + 1} | señal=${numero}`);
 
-    }
+    // Aumenta el contador de intentos
+    intentos++;
 
-    console.log(`Intentos de hackeo del sistema: ${intentos}`);
-};
+    // Repite mientras: el número NO supere 8 y aún queden intentos
+  } while (numero <= 8 && intentos < 5);
+
+  // Mensaje final con cuántos intentos se hicieron
+  console.log(`Intentos de hackeo del sistema: ${intentos}`);
+}
 
 // 4. Validador de mision (Valida si una mision es legal o no)
 function validarMision(nombreMision){
