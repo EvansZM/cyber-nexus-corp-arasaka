@@ -59,7 +59,7 @@ function verificarRango(nombre) {
 
 
 
-//opcional para uso del registro de mercenrario con html
+/* //opcional para uso del registro de mercenrario con html
 //boton para registro 
 document.getElementById('btnRegistrar').addEventListener('click', () => { 
     const nombre = document.getElementById('nombre').value; 
@@ -77,4 +77,4 @@ document.getElementById('btnRegistrar').addEventListener('click', () => {
             document.querySelector('.panel').appendChild(log); 
         } 
         log.textContent = mensaje; 
-    }); 
+    });  */
