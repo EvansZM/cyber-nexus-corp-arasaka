@@ -1,63 +1,80 @@
+
 const listaMercenarios = [];
 let nivelSeguridad = 3;
 
-/** Agregar mercenario en Araska */
-function agregarMercenario(nombre, habilidad) {
-    const nombreVerificado = String(nombre || '').trim();
-    const habilidadVerificada = String(habilidad || '').trim();
+// Función de registro de mercenario
+function registrarMercenario(nombre, habilidad) {
+  if (!nombre || !habilidad) {
+    return 'Error: datos incompletos';
+  }
 
-    if (!nombreVerificado || !habilidadVerificada) {
-        return 'Error: datos incompletos para Araska.';
-    }
+  const mercenario = {
+    nombre: nombre,
+    habilidad: habilidad
+  };
 
-    const mercenario = {
-        nombre: nombreVerificado,
-        habilidad: habilidadVerificada
-    };
-    listaMercenarios.push(mercenario);
-    return `Araska: ${nombreVerificado.toUpperCase()} registrado con habilidad de ${habilidadVerificada}.`;
+  listaMercenarios.push(mercenario);
+
+  return `MERCENARIO ${nombre.toUpperCase()} REGISTRADO CON ÉXITO`;
 }
 
-/** Consulta de equipo segun los registro de los mercenarios */
-
+// Consulta del equipo usando ciclo for
 function consultarEquipo() {
-    if (listaMercenarios.length == 0) {
-        return 'No hay mercenarios registrados en el sistema.';
-    }
-    let salida = `Araska - Equipo registrado (${listaMercenarios.length}):\n`;
-    for (let i = 0; i < listaMercenarios.length; i++) {
-        const m = listaMercenarios[i];
-        salida += `${i + 1}. ${m.nombre} - Habilidad: ${m.habilidad}\n`;
-    }
-    return salida.trim();
+  if (listaMercenarios.length === 0) {
+    return 'No hay mercenarios en la facción.';
+  }
+
+  let salida = 'Equipo de la facción:\n';
+
+  for (let i = 0; i < listaMercenarios.length; i++) {
+    salida += `${i + 1}. ${listaMercenarios[i].nombre} - ${listaMercenarios[i].habilidad}\n`;
+  }
+
+  return salida;
 }
 
-/** Verificar rango de acceso de mercenario */
+// Verificación de rango usando ciclo while + if-else
 function verificarRango(nombre) {
-    const objetivo = String(nombre || '').trim().toLowerCase();
-    let i = 0;
-    let encontrado = false;
+  let i = 0;
+  let encontrado = false;
 
-    while (i < listaMercenarios.length && !encontrado) {
-        const m = listaMercenarios[i];
-        if (m.nombre.toLowerCase() == objetivo) {
-            encontrado = true;
-        } else {
-            i++;
-        }
+  while (i < listaMercenarios.length && !encontrado) {
+    if (listaMercenarios[i].nombre === nombre) {
+      encontrado = true;
+    } else {
+      i++;
     }
-    if (encontrado) {
-        if (nivelSeguridad >= 4) {
-            return `Araska: ${nombre.toUpperCase()} tiene rango ALTO de acceso.`;
-        } else {
-            return `Araska: ${nombre.toUpperCase()} tiene rango BAJO de acceso.`;
-        }
-    } 
-    else {    
-        return `Araska: ${nombre.toUpperCase()} no está registrado en el sistema.`;
+  }
+
+  if (encontrado) {
+    if (nivelSeguridad >= 4) {
+      return `${nombre.toUpperCase()} TIENE RANGO ALTO`;
+    } else {
+      return `${nombre.toUpperCase()} TIENE RANGO BAJO`;
     }
+  } else {
+    return `${nombre.toUpperCase()} NO ESTÁ REGISTRADO EN LA FACCIÓN`;
+  }
 }
 
 
 
+//opcional para uso del registro de mercenrario con html
+//boton para registro 
+document.getElementById('btnRegistrar').addEventListener('click', () => { 
+    const nombre = document.getElementById('nombre').value; 
+    const habilidad = document.getElementById('habilidad').value; 
+    const mensaje = registrarMercenario(nombre, habilidad); 
+    
+    // Mostrar en consola 
+    console.log("Mercenario registrado", mensaje); 
 
+    // Mostrar en pantalla (si quieres) 
+    let log = document.querySelector('.log'); 
+        if (!log) { 
+            log = document.createElement('div'); 
+            log.className = 'log'; 
+            document.querySelector('.panel').appendChild(log); 
+        } 
+        log.textContent = mensaje; 
+    }); 

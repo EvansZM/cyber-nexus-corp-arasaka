@@ -11,13 +11,43 @@ function existeMercenario(nombre) {
 
 function ejecutarContrato(nombreMercenario, nombreMision, dificultad) {
 
-   
+
     function validarAcceso() {
         // Si el nivel de seguridad de la faccion es menor que la dificultad, no se da acceso
         return nivelSeguridad > dificultad; //Booleano true o false 
     };
 
+    //Las siguientes tres validan que exista el mercenario que la mision este disponible y que tenga el nivel adecuado para la mision 
+    if (!existeMercenario(nombreMercenario)) {
+        console.log("Sistema Corporación Araska: Mercenario no registrado.");
+        return;
+    }
+
+    if (!validarMision(nombreMision)) {
+        console.log("Sistema Corporación Araska: Misión no disponible.");
+        return;
+    }
+
+    if (!validarAcceso()) {
+        console.log("Sistema Corporación Araska: Nivel de seguridad insuficiente.");
+        return;
+    }
+ 
+    //Si se cumplen las tres validaciones entonces se ejecuta la ultima parte de la funcion
+    //Se almacena la recompensa en una variable para ser mostrada despues
+    let recompensa = calcularRecompensa(dificultad);
+
+    //Se muestra la info del mercenario y la mision 
+    console.log("===== OPERACIÓN ARASKA =====");
+    console.log("Mercenario: " + nombreMercenario);
+    console.log("Misión: " + nombreMision);
+    console.log("Recompensa: " + recompensa);
+
+    //Se ejecuta el bloque de intentos de hackeo
+    simuladorDePeligro();
 };
+
+
 
 
 /*  // Ejecutamos el punto de inicio en 3 segundos 
