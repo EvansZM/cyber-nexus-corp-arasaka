@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Nexus — Corporación Arasaka</title>
+    <style>
+        body { 
+            font-family: system-ui, sans-serif; 
+            background:#0b0f14; 
+            color:#e6edf3; 
+            margin:0; 
+            padding:1rem; 
+        }
+        .panel { 
+            max-width: 720px; 
+            margin: 2rem auto; 
+            padding: 1rem; 
+            background:#11161d; 
+            border:1px solid #1f2a37; 
+            border-radius: 8px; 
+        }
+        h1, h2 { 
+            margin: 0 0 .75rem; 
+            color:#9cc2ff; 
+        }
+        input, button { 
+            margin:.25rem 0; 
+            padding:.5rem; 
+            border:1px solid #2b3948; 
+            border-radius:4px;
+        }
+        .log { 
+            white-space: pre-wrap; 
+            background:#0f141a; 
+            padding:.75rem; 
+            border-radius:6px; 
+            border:1px solid #1f2a37; 
+            margin-top:1rem; 
+            font-size:.9rem;
+        }
+        .badge { 
+            display:inline-block;   
+            padding:.15rem .5rem; 
+            border:1px solid #2b3948; 
+            border-radius:4px; 
+            font-size:.85rem; 
+            color:#9cc2ff; 
+            margin-bottom:1rem; 
+        }
+    </style>
+
+</head>
+<body>
+    <div class="panel">
+    <h1>Corporación Arasaka — Gestión de Mercenarios</h1>
+    <p class="etiqueta-faccion">Facción: Arasaka</p>
+
+    <h2>Registrar mercenario</h2>
+    <input id="nombre" placeholder="Nombre" />
+    <input id="habilidad" placeholder="Habilidad especial" />
+    <button id="btnRegistrar">Registrar</button>
+
+
+
+    <script src="funciones-personajes.js"></script>
+</body>
+</html>
