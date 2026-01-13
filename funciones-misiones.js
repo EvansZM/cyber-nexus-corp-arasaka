@@ -26,7 +26,7 @@ function simuladorDePeligro(){
         console.log(`Intento de hackeo ${intentos}`);
         intentos++;
 
-    }while(intentos > 8 || intentos == 5){
+    }while(numero <= 8 || intentos < 5){
 
     }
 
